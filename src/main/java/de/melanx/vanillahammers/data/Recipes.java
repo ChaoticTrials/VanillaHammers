@@ -1,57 +1,65 @@
 package de.melanx.vanillahammers.data;
 
 import com.google.gson.JsonArray;
-import de.melanx.morevanillalib.api.BigBreakMaterials;
+import de.melanx.morevanillalib.api.IConfigurableTier;
+import de.melanx.morevanillalib.api.ranged.RangeItem;
+import de.melanx.morevanillalib.api.ranged.RangeMaterials;
 import de.melanx.morevanillalib.core.WrapperResult;
 import de.melanx.morevanillalib.core.crafting.VanillaCondition;
 import de.melanx.vanillahammers.VanillaHammers;
 import de.melanx.vanillahammers.items.HammerRegistry;
+import io.github.noeppi_noeppi.libx.data.provider.recipe.RecipeProviderBase;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.data.RecipeProvider;
-import net.minecraft.data.ShapedRecipeBuilder;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.tags.ITag;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.UpgradeRecipeBuilder;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.registries.ForgeRegistries;
 
-import javax.annotation.Nonnull;
-import java.util.function.Consumer;
-
-public class Recipes extends RecipeProvider {
+public class Recipes extends RecipeProviderBase {
 
     public Recipes(DataGenerator generator) {
-        super(generator);
+        super(VanillaHammers.getInstance(), generator);
     }
 
     @Override
-    protected void registerRecipes(@Nonnull Consumer<IFinishedRecipe> consumer) {
-        int i = 0;
-        for (RegistryObject<Item> item : HammerRegistry.ITEMS.getEntries()) {
-            BigBreakMaterials hammer = BigBreakMaterials.values()[i];
-            ITag.INamedTag<Item> tagIngredient = hammer.getTagIngredient();
-            ShapedRecipeBuilder recipe = createRecipe(item.get(), tagIngredient);
-            if (!hammer.isVanilla()) {
-                recipe.build(WrapperResult.transformJson(consumer, json -> {
-                    JsonArray array = new JsonArray();
-                    array.add(VanillaCondition.SERIALIZER.getJson(new VanillaCondition(true)));
-                    json.add("conditions", array);
-                }));
-            } else {
-                recipe.build(consumer);
-            }
-            i++;
-        }
+    protected void setup() {
+        //noinspection ConstantConditions
+        ForgeRegistries.ITEMS.getValues().stream()
+                .filter(item -> item.getRegistryName().getNamespace().equalsIgnoreCase(VanillaHammers.getInstance().modid))
+                .map(item -> (RangeItem) item)
+                .forEach(item -> {
+                    IConfigurableTier material = item.getToolMaterial();
+                    if (material == RangeMaterials.NETHERITE) {
+                        //noinspection ConstantConditions
+                        UpgradeRecipeBuilder.smithing(Ingredient.of(HammerRegistry.diamondHammer), Ingredient.of(Items.NETHERITE_INGOT), item)
+                                .unlocks("hasDiamond", has(HammerRegistry.diamondHammer))
+                                .save(this.consumer(), item.getRegistryName().getPath() + "_smithing");
+                    } else {
+                        RecipeBuilder recipe = this.createRecipe(item, material.getCraftingIngredient());
+                        if (!material.isVanilla()) {
+                            recipe.save(WrapperResult.transformJson(this.consumer(), json -> {
+                                JsonArray array = new JsonArray();
+                                array.add(VanillaCondition.SERIALIZER.getJson(new VanillaCondition()));
+                                json.add("conditions", array);
+                            }));
+                        } else {
+                            recipe.save(this.consumer());
+                        }
+                    }
+                });
     }
 
-    private ShapedRecipeBuilder createRecipe(Item result, ITag.INamedTag<Item> ingredient) {
-        return ShapedRecipeBuilder.shapedRecipe(result)
-                .key('D', ingredient)
-                .key('s', Items.STICK)
-                .patternLine("DsD")
-                .patternLine(" s ")
-                .patternLine(" s ")
-                .setGroup(VanillaHammers.MODID)
-                .addCriterion("has_material", hasItem(ingredient));
+    private RecipeBuilder createRecipe(Item result, Ingredient ingredient) {
+        return ShapedRecipeBuilder.shaped(result)
+                .define('D', ingredient)
+                .define('s', Items.STICK)
+                .pattern("DsD")
+                .pattern(" s ")
+                .pattern(" s ")
+                .group(VanillaHammers.getInstance().modid)
+                .unlockedBy("has_material", has(Items.STICK));
     }
 }

@@ -19,7 +19,6 @@
   },
   "conditions": [
     {
-      "value": true,
       "type": "morevanillalib:vanilla_only"
     }
   ]

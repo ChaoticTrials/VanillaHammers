@@ -1,25 +1,25 @@
 package de.melanx.vanillahammers.data;
 
 import de.melanx.vanillahammers.VanillaHammers;
-import de.melanx.vanillahammers.items.HammerRegistry;
+import io.github.noeppi_noeppi.libx.data.provider.ItemModelProviderBase;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.Item;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.RegistryObject;
 
-public class ItemModels extends de.melanx.morevanillalib.data.ItemModels {
-    public ItemModels(DataGenerator generator, ExistingFileHelper helper) {
-        super(generator, VanillaHammers.MODID, helper);
+public class ItemModels extends ItemModelProviderBase {
+
+    public ItemModels(DataGenerator generator, ExistingFileHelper fileHelper) {
+        super(VanillaHammers.getInstance(), generator, fileHelper);
     }
 
     @Override
-    protected void registerModels() {
-        for (RegistryObject<Item> item : HammerRegistry.ITEMS.getEntries())
-            this.generateItem(item.get());
+    protected void setup() {
+        // :)
     }
 
     @Override
-    public String getName() {
-        return VanillaHammers.MODID + " item models";
+    protected void defaultItem(ResourceLocation id, Item item) {
+        this.withExistingParent(id.getPath(), HANDHELD).texture("layer0", new ResourceLocation(id.getNamespace(), "item/" + id.getPath()));
     }
 }

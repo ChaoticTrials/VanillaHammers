@@ -1,15 +1,13 @@
 package de.melanx.vanillahammers.data;
 
-import de.melanx.vanillahammers.VanillaHammers;
-import de.melanx.vanillahammers.data.tags.ItemTags;
-import net.minecraft.data.BlockTagsProvider;
+import de.melanx.vanillahammers.data.tags.HammerTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
-@Mod.EventBusSubscriber(modid = VanillaHammers.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = "vanillahammers", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataCreator {
 
     @SubscribeEvent
@@ -18,12 +16,10 @@ public class DataCreator {
         ExistingFileHelper helper = event.getExistingFileHelper();
 
         if (event.includeServer()) {
-            generator.addProvider(new ItemTags(generator, new BlockTagsProvider(generator)));
+            generator.addProvider(new HammerTags(generator, helper));
             generator.addProvider(new Recipes(generator));
         }
         if (event.includeClient()) {
-            generator.addProvider(new Languages.English(generator));
-            generator.addProvider(new Languages.German(generator));
             generator.addProvider(new ItemModels(generator, helper));
         }
     }

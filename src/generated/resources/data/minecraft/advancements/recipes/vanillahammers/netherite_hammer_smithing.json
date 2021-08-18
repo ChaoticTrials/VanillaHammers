@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:netherite_hammer_smithing"
+    ]
+  },
+  "criteria": {
+    "hasDiamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillahammers:diamond_hammer"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:netherite_hammer_smithing"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "hasDiamond",
+      "has_the_recipe"
+    ]
+  ]
+}

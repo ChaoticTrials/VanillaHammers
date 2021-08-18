@@ -1,22 +1,26 @@
 package de.melanx.vanillahammers.items;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
+import de.melanx.morevanillalib.api.IConfigurableTier;
+import de.melanx.morevanillalib.api.ToolType;
+import de.melanx.morevanillalib.api.ranged.RangeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class ObsidianHammer extends HammerItem {
+import javax.annotation.Nonnull;
 
-    public ObsidianHammer(IItemTier toolMaterial, float attackSpeed) {
-        super(toolMaterial, attackSpeed);
+public class ObsidianHammer extends RangeItem {
+
+    public ObsidianHammer(IConfigurableTier material, ToolType toolType, Properties properties) {
+        super(material, toolType, properties);
     }
 
     @Override
-    public float getDestroySpeed(ItemStack stack, BlockState state) {
+    public float getDestroySpeed(@Nonnull ItemStack stack, BlockState state) {
         if (state.getBlock() == Blocks.OBSIDIAN) {
-            int efficiencyLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.EFFICIENCY, stack);
+            int efficiencyLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY, stack);
             return 5.0F * (efficiencyLevel / 3.5F + 1);
         } else {
             return super.getDestroySpeed(stack, state);
