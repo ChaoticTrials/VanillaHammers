@@ -24,7 +24,7 @@ Adds a ton of new hammers to the game!
 [[dependencies.vanillahammers]]
     modId="morevanillalib"
     mandatory=true
-    versionRange="[1.17.1-2.0.2,)"
+    versionRange="[1.17.1-2.0.5,)"
     ordering="NONE"
     side="BOTH"
 
