@@ -12,7 +12,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import javax.annotation.Nonnull;
 
 @Mod("vanillahammers")
-public class VanillaHammers extends ModXRegistration {
+public final class VanillaHammers extends ModXRegistration {
     private static VanillaHammers instance;
 
     public VanillaHammers() {
