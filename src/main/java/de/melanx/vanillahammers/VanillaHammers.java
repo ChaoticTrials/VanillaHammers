@@ -16,7 +16,7 @@ public final class VanillaHammers extends ModXRegistration {
     private static VanillaHammers instance;
 
     public VanillaHammers() {
-        super("vanillahammers", new CreativeModeTab("vanillahammers") {
+        super(new CreativeModeTab("vanillahammers") {
             @Nonnull
             @Override
             public ItemStack makeIcon() {

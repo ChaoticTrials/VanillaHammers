@@ -1,15 +1,17 @@
-package de.melanx.vanillahammers.data.tags;
+package de.melanx.vanillahammers.data;
 
 import de.melanx.morevanillalib.api.IConfigurableTier;
 import de.melanx.morevanillalib.api.ranged.RangeItem;
 import de.melanx.morevanillalib.api.ranged.RangeMaterials;
 import de.melanx.morevanillalib.data.ModTags;
 import de.melanx.vanillahammers.VanillaHammers;
+import io.github.noeppi_noeppi.libx.annotation.data.Datagen;
 import io.github.noeppi_noeppi.libx.data.provider.CommonTagsProviderBase;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+@Datagen
 public class HammerTags extends CommonTagsProviderBase {
 
     public HammerTags(DataGenerator generator, ExistingFileHelper fileHelper) {

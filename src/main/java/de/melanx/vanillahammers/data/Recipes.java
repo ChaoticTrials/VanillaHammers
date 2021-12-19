@@ -8,7 +8,9 @@ import de.melanx.morevanillalib.core.WrapperResult;
 import de.melanx.morevanillalib.core.crafting.VanillaCondition;
 import de.melanx.vanillahammers.VanillaHammers;
 import de.melanx.vanillahammers.items.HammerRegistry;
+import io.github.noeppi_noeppi.libx.annotation.data.Datagen;
 import io.github.noeppi_noeppi.libx.data.provider.recipe.RecipeProviderBase;
+import io.github.noeppi_noeppi.libx.mod.ModX;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -18,10 +20,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.registries.ForgeRegistries;
 
+@Datagen
 public class Recipes extends RecipeProviderBase {
 
-    public Recipes(DataGenerator generator) {
-        super(VanillaHammers.getInstance(), generator);
+    public Recipes(ModX mod, DataGenerator generator) {
+        super(mod, generator);
     }
 
     @Override
