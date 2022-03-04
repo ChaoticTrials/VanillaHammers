@@ -13,6 +13,7 @@ import javax.annotation.Nonnull;
 
 @Mod("vanillahammers")
 public final class VanillaHammers extends ModXRegistration {
+
     private static VanillaHammers instance;
 
     public VanillaHammers() {

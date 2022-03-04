@@ -1,6 +1,7 @@
 modLoader="javafml"
-loaderVersion="[39,)"
+loaderVersion="[40,)"
 license="GNU General Public License 3"
+issueTrackerURL="https://github.com/MelanX/vanilla-hammers/issues"
 
 [[mods]]
 modId="vanillahammers"
@@ -9,7 +10,6 @@ displayName="Vanilla Hammers"
 updateJSONURL="https://assets.melanx.de/updates/vanilla-hammers-forge.json"
 authors="MelanX"
 credits="Draylar made this mod for Fabric, this is just a fork for Forge."
-icon="assets/vanillahammers/icon.png"
 description='''
 Adds a ton of new hammers to the game!
 '''
@@ -17,27 +17,27 @@ Adds a ton of new hammers to the game!
 [[dependencies.vanillahammers]]
     modId="forge"
     mandatory=true
-    versionRange="[39,)"
+    versionRange="[40.0.3,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.vanillahammers]]
     modId="morevanillalib"
     mandatory=true
-    versionRange="[1.18.1-3.0.0,)"
+    versionRange="[1.18.2-3.1.0,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.vanillahammers]]
     modId="libx"
     mandatory=true
-    versionRange="[1.18.1,)"
+    versionRange="[1.18.2,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.vanillahammers]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.1, 1.19)"
+    versionRange="[1.18.2, 1.19)"
     ordering="NONE"
     side="BOTH"
