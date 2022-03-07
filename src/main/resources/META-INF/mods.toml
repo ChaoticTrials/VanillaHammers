@@ -32,7 +32,7 @@ Adds a ton of new hammers to the game!
     modId="libx"
     mandatory=true
     versionRange="[1.18.2,)"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"
 
 [[dependencies.vanillahammers]]
