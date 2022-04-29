@@ -1,0 +1,24 @@
+{
+  "itemGroup.vanillahammers": "",
+  "item.vanillahammers.wooden_hammer": "Drewniany młot",
+  "item.vanillahammers.stone_hammer": "Kamienny młot",
+  "item.vanillahammers.iron_hammer": "Żelazny młot",
+  "item.vanillahammers.golden_hammer": "Złoty młot",
+  "item.vanillahammers.diamond_hammer": "Diamentowy młot",
+  "item.vanillahammers.netherite_hammer": "Netherytowy młot",
+  
+  "item.vanillahammers.bone_hammer": "Młot z kości",
+  "item.vanillahammers.coal_hammer": "Węglowy młot",
+  "item.vanillahammers.emerald_hammer": "Szmaragdowy młot",
+  "item.vanillahammers.ender_hammer": "Enderowy młot",
+  "item.vanillahammers.fiery_hammer": "Ognisty młot",
+  "item.vanillahammers.glowstone_hammer": "Jasnogłazowy młot",
+  "item.vanillahammers.lapis_hammer": "Lazurytowy młot",
+  "item.vanillahammers.nether_hammer": "Netherowy młot",
+  "item.vanillahammers.obsidian_hammer": "Obsydianowy młot",
+  "item.vanillahammers.paper_hammer": "Papierowy młot",
+  "item.vanillahammers.prismarine_hammer": "Pryzmarynowy młot",
+  "item.vanillahammers.quartz_hammer": "Kwarcowy młot",
+  "item.vanillahammers.redstone_hammer": "Redstonowy młot",
+  "item.vanillahammers.slime_hammer": "Szlamowy młot"
+}
