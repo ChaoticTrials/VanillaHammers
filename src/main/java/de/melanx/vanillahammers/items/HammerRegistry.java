@@ -16,7 +16,7 @@ public class HammerRegistry {
     public static final Item ironHammer = new RangeItem(RangeMaterials.IRON, ToolType.PICKAXE, new Item.Properties().tab(VanillaHammers.getInstance().tab));
     public static final Item goldenHammer = new RangeItem(RangeMaterials.GOLDEN, ToolType.PICKAXE, new Item.Properties().tab(VanillaHammers.getInstance().tab));
     public static final Item diamondHammer = new RangeItem(RangeMaterials.DIAMOND, ToolType.PICKAXE, new Item.Properties().tab(VanillaHammers.getInstance().tab));
-    public static final Item netheriteHammer = new RangeItem(RangeMaterials.NETHERITE, ToolType.PICKAXE, new Item.Properties().tab(VanillaHammers.getInstance().tab));
+    public static final Item netheriteHammer = new RangeItem(RangeMaterials.NETHERITE, ToolType.PICKAXE, new Item.Properties().tab(VanillaHammers.getInstance().tab).fireResistant());
 
     public static final Item boneHammer = new RangeItem(RangeMaterials.BONE, ToolType.PICKAXE, new Item.Properties().tab(VanillaHammers.getInstance().tab));
     public static final Item coalHammer = new RangeItem(RangeMaterials.COAL, ToolType.PICKAXE, new Item.Properties().tab(VanillaHammers.getInstance().tab));
